@@ -19,4 +19,5 @@ RUN dotnet publish "WebApplication1.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebApplication1.dll"]
+# ENTRYPOINT ["dotnet", "WebApplication1.dll"]
+CMD ASPNETCORE_URLS=http://*$PORT dotnet WebApplication1.dll
