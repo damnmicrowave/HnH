@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\WebApplication1.csproj": {}
+    "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\WebApplication1.csproj": {
+    "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\WebApplication1.csproj",
-        "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\backend.csproj",
+        "projectName": "backend",
+        "projectPath": "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\Kremon\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Kremon\\Desktop\\HnH\\backend\\obj\\",
         "projectStyle": "PackageReference",
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FaunaDB.Client": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.14.0, )"

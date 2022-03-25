@@ -11,13 +11,13 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("2a9fb402-983c-4a59-9fd3-ed11905de579")]
-[assembly: System.Reflection.AssemblyCompanyAttribute("WebApplication1")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b2ebcc5e-97bc-4e73-b168-08deda90c1c3")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("WebApplication1")]
-[assembly: System.Reflection.AssemblyTitleAttribute("WebApplication1")]
+[assembly: System.Reflection.AssemblyProductAttribute("backend")]
+[assembly: System.Reflection.AssemblyTitleAttribute("backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
