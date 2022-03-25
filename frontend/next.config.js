@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const moduleExports = {
+module.exports = {
   reactStrictMode: true,
   rewrites: async () => ({
     fallback: [
@@ -30,5 +30,3 @@ const moduleExports = {
   },
   pageExtensions: [ 'page.tsx', 'endpoint.ts' ]
 }
-
-module.exports = moduleExports
