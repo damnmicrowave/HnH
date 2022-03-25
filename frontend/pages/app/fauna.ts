@@ -1,10 +1,11 @@
-import { Client, ExprArg, QueryOptions, values } from 'faunadb'
+import {Client, ExprArg, QueryOptions, values} from 'faunadb'
 import Ref = values.Ref
 
-export const db = new Client({
-  secret: process.env.FAUNADB_SERVER!,
-  domain: 'db.eu.fauna.com'
-})
+export const getClient = (secret?: string) =>
+  new Client({
+    secret: secret ? secret : process.env.FAUNADB_SECRET!,
+    domain: 'db.eu.fauna.com'
+  })
 
 export type DBResponse<Data> = {
   ref?: Ref
@@ -12,5 +13,5 @@ export type DBResponse<Data> = {
   data: Data & { [_: string]: any }
 }
 
-export const dbQuery = <Data>(expr: ExprArg, options?: QueryOptions) =>
-  db.query<DBResponse<Data>>(expr, options)
+export const query = <Data>(client: Client, expr: ExprArg, options?: QueryOptions) =>
+  client.query<DBResponse<Data>>(expr, options)

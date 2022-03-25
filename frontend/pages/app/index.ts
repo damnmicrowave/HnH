@@ -1,1 +1,1 @@
-export { db, dbQuery } from './fauna'
+export { getClient, query } from './fauna'
