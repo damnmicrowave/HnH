@@ -1,13 +1,14 @@
-import styles from '../styles/Home.module.css'
+import { Button } from '../components'
 
 import type { NextPage } from 'next'
+import { withLayout } from '../layout/Layout';
 
-const Home: NextPage = () => {
+function Home({  }): JSX.Element {
   return (
-   <>
-    Initial page...
-   </>
-  )
+    <>
+      / Body
+    </>
+  );
 }
 
-export default Home
+export default withLayout(Home);

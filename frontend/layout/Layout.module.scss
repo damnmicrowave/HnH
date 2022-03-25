@@ -1,0 +1,39 @@
+.wrapper {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+	grid-gap: 30px 30px;
+	grid-template-areas:
+		"header"
+		"body"
+		"footer";
+}
+
+.header {
+	grid-area: header;
+	padding: 0 30px;
+}
+
+.body {
+	grid-area: body;
+	padding: 0 30px;
+}
+
+.footer {
+	grid-area: footer;
+	padding: 0 30px;
+}
+
+@media (max-width: 765px) {
+	.header {
+		padding: 15px;
+	}
+
+	.body {
+		padding: 15px;
+	}
+
+	.footer {
+		padding: 15px;
+	}
+}

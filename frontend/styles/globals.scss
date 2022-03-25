@@ -2,7 +2,7 @@
 
 @font-face {
   font-weight: 400;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: normal;
   src: url('./fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-weight: 700;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: normal;
   src: url('./fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-weight: 700;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: normal;
   src: url('./fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-weight: 700;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: italic;
   src: url('./fonts/NotoSans/NotoSans-BoldItalic.ttf') format('truetype');
   font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
   font-weight: 400;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: italic;
   src: url('./fonts/NotoSans/NotoSans-Italic.ttf') format('truetype');
   font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
   font-weight: 400;
-  font-family: 'Ubuntu';
+  font-family: 'NotoSans';
   font-style: normal;
   src: url('./fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
   font-display: swap;
@@ -98,6 +98,7 @@ body {
   margin: 0;
 
   font-family: 'NotoSans', sans-serif;
+  color: #202C3D;
 
   cursor: default;
   -webkit-font-smoothing: antialiased;

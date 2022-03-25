@@ -1,0 +1,57 @@
+@import '../../styles/common.scss';
+
+.header {
+	background-color: map-get($map: $col, $key: ulight);
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 20px;
+
+	font-weight: 700;
+	font-size: 20px;
+	color: white;
+
+	svg {
+		height: 80px;
+		cursor: pointer;
+	}
+	.burger {
+		display: none;
+		height: 40px;
+	}
+	.menu {
+		justify-self: end;
+		
+		a {
+			display: inline-block;
+			margin-left: 10px;
+			&hover {
+				color: map-get($col, medium);
+			}
+		}
+	}
+}
+
+@media (max-width: 765px) {
+	.header {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 5px;
+		svg {
+			height: 70%;
+		}
+
+		.burger {
+			display: block;
+			justify-self: end;
+		}
+		.person {
+			justify-self: end;
+		}
+		.menu {
+			display: none !important;
+		}
+	}
+
+
+}
