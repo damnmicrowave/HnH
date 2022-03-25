@@ -1,0 +1,111 @@
+@import './normalize.css';
+
+@font-face {
+  font-weight: 400;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  src: url('./fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  src: url('./fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  src: url('./fonts/NotoSans/NotoSans-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: 'Ubuntu';
+  font-style: italic;
+  src: url('./fonts/NotoSans/NotoSans-BoldItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: 'Ubuntu';
+  font-style: italic;
+  src: url('./fonts/NotoSans/NotoSans-Italic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: 'Ubuntu';
+  font-style: normal;
+  src: url('./fonts/NotoSans/NotoSans-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+form {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a,
+button,
+div,
+input,
+label,
+select,
+span,
+strong,
+textarea {
+  outline: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input,
+textarea,
+*[contenteditable] {
+  cursor: text;
+}
+
+body {
+  margin: 0;
+
+  font-family: 'NotoSans', sans-serif;
+
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
