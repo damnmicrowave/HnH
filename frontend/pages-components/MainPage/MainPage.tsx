@@ -11,9 +11,9 @@ export const MainPage = ({ ...props }: MainPageProps): JSX.Element => {
 		<div className={styles.wrapper}>
 			<Description />
 			<div className={styles.tops}>
-				<Top />
-				<Top />
-				<Top />
+				<Top variant='topic' />
+				<Top variant='article' />
+				<Top variant='discussion' />
 			</div>
 			<Partners />
 		</div>

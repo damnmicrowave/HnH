@@ -10,7 +10,7 @@ export const ArticlePage = ({ ...props }: ArticlePageProps): JSX.Element => {
     return (
 		<div className={styles.wrapper}>
 			<Article title='Article title' className={styles.article}>Article body</Article>
-			<div className={styles.top}><Top/></div>
+			<div className={styles.top}><Top variant='article'/></div>
 			<div className={styles.comments}>
 				<Thread className={styles.top} username='user111' date={new Date()} comment='Sample thread' />
 				<NewThread username='user123'></NewThread>
