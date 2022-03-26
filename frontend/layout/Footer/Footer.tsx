@@ -6,7 +6,7 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
 
 	return(
 		<footer className={cn(className, styles.wrapper)} {...props}>
-			footer
+			
 		</footer>
 	);
 };

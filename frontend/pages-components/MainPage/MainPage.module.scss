@@ -1,0 +1,14 @@
+@import '../../styles/common';
+
+.wrapper {
+	display: grid;
+	gap: 20px;
+
+}
+
+.tops {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 10px;
+	justify-items: center;
+}

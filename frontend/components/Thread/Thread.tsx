@@ -5,7 +5,7 @@ import UserIcon from './User.svg';
 import ReplyIcon from './Reply.svg';
 import { format } from 'date-fns';
 
-export const Thread = ({ children, username, comment, date, className, ...props }: ThreadProps): JSX.Element => {
+export const Thread = ({ username, comment, date, className, ...props }: ThreadProps): JSX.Element => {
 	return(
 		<div className={styles.thread}
 			{...props}>

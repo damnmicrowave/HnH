@@ -3,11 +3,12 @@ import type { NextPage } from 'next'
 import { withLayout } from '../layout/Layout';
 import { format } from 'date-fns';
 import { Description, MainPage, Top } from '../pages-components';
+import { ArticlePage } from '../pages-components/ArticlePage/ArticlePage';
 
-function Home({  }): JSX.Element {
+function Article({  }): JSX.Element {
   return (
-    <MainPage />
+    <ArticlePage />
   );
 }
 
-export default withLayout(Home);
+export default withLayout(Article);
