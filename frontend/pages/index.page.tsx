@@ -1,7 +1,8 @@
-import { Button, Card, P, Star, Tag } from '../components'
+import { Button, Card, Input, NewThread, P, Star, Tag, Textarea, Thread } from '../components'
 
 import type { NextPage } from 'next'
 import { withLayout } from '../layout/Layout';
+import { format } from 'date-fns';
 
 function Home({  }): JSX.Element {
   return (
@@ -11,6 +12,10 @@ function Home({  }): JSX.Element {
       <Tag>tag</Tag>
       <Star />
       <Card title={'TiTle'}>It is my first card</Card>
+      <Input placeholder='hello' />
+      <Textarea />
+      <Thread username='username' date={new Date("2019-01-16")} comment='comment' />
+      <NewThread username='username' />
     </>
   );
 }

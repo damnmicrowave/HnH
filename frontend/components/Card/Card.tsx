@@ -9,16 +9,14 @@ import Link from 'next/link';
 
 export const Card = ({ children, title, href='#', isChosen=false, className, ...props }: CardProps): JSX.Element => {
     return (
-        <Link href={href} passHref>
+        
             <div className={styles.card}
-                    {...props}
-            >
+                    {...props}>
                 <P tag='h1' className={styles.title}>{title}</P>
                 <Star className={styles.star} />
                 <Tag className={styles.tag}>theme</Tag>
                 <P className={styles.info}>{children}</P>
-                <ArrowIcon className={styles.arrow} />
+                <Link href={href} passHref><ArrowIcon className={styles.arrow} /></Link>
             </div>
-        </Link>
     );
 };

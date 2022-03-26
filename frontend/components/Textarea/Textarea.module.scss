@@ -1,0 +1,25 @@
+@import '../../styles/common';
+
+.input {
+	padding: 7px 15px;
+
+	border: none;
+	resize: none;
+
+
+	background: white;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+
+	font-size: 18px;
+	font-family: 'NotoSans', sans-serif;
+}
+
+.input::placeholder {
+	color: gray;
+}
+
+.input:focus {
+	outline: 3px solid map-get($col, light);
+	box-shadow: 0px 4px 10px map-get($col, ulight);
+}
