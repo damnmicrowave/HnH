@@ -1,0 +1,9 @@
+@import '../../styles//common';
+
+.tick {
+	fill: rgba(98, 136, 189, 0.2);
+	cursor: pointer;
+}
+.tickChosen {
+	fill: map-get($map: $col, $key: medium);
+}

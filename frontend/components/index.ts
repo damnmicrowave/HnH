@@ -7,3 +7,4 @@ export {Input} from './Input/Input';
 export {Textarea} from './Textarea/Textarea';
 export {Thread} from './Thread/Thread';
 export {NewThread} from './NewThread/NewThread';
+export {Tick} from './Tick/Tick';

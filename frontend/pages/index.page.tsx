@@ -1,4 +1,4 @@
-import { Button, Card, Input, NewThread, P, Star, Tag, Textarea, Thread } from '../components'
+import { Button, Card, Input, NewThread, P, Star, Tag, Textarea, Thread, Tick } from '../components'
 
 import type { NextPage } from 'next'
 import { withLayout } from '../layout/Layout';
@@ -16,6 +16,7 @@ function Home({  }): JSX.Element {
       <Textarea />
       <Thread username='username' date={new Date("2019-01-16")} comment='comment' />
       <NewThread username='username' />
+      <Tick />
     </>
   );
 }
