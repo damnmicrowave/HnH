@@ -4,4 +4,5 @@ export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
     children: ReactNode;
     isChosen?: boolean;
     title: string;
+    href?: string;
 }
