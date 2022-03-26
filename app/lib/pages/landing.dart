@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_n_heal/uikit/button.dart';
+import 'package:hack_n_heal/uikit/colors.dart';
+import 'package:hack_n_heal/widgets/User.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+import '../uikit/modals.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,34 +35,47 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           children: <Widget>[
             _drawBarHeader(),
-            _drawBarItem(Icons.face, "My account", '/account'),
+            _drawBarItem(Icons.group_outlined, "Topics", '/topics'),
+            _drawBarItem(Icons.article_outlined, "Articles", '/articles'),
             _drawBarItem(
-                Icons.supervised_user_circle, "Conversation", '/conversation'),
-            _drawBarItem(Icons.article, "Articles", '/article'),
+                Icons.volunteer_activism_outlined, "Partners", '/partners'),
           ],
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(10.0),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Text.rich(
               TextSpan(
                   text: 'Hello in ',
                   style: TextStyle(
-                      fontSize: 24, color: Color(0xFF6288BD), letterSpacing: 2),
+                      fontSize: 24,
+                      color: const AppColors().heading1Color(),
+                      letterSpacing: 2),
                   children: [
-                    TextSpan(
+                    const TextSpan(
                         text: 'ACE',
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           color: Color(0xFF202C3D),
                         )),
-                    TextSpan(
+                    const TextSpan(
                         text: 'hub! ',
                         style: TextStyle(fontWeight: FontWeight.w900)),
-                    TextSpan(text: 'We do lalalaaxxxxxxxxxxx'),
+                    const TextSpan(text: "\n\nChildhood trauma is a "),
+                    const TextSpan(
+                        text: "problem ",
+                        style: TextStyle(fontWeight: FontWeight.w900)),
+                    const TextSpan(
+                        text: "that's often overlooked in the modern world. "),
+                    TextSpan(
+                        text: "\n\nWe want to help you",
+                        style: TextStyle(
+                            color: const AppColors().darkColor(),
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 2)),
                   ]),
             ),
           ),
@@ -68,7 +85,26 @@ class _MyHomePageState extends State<MyHomePage> {
               const AppButton().middleButton('LEAVE A REQUEST'),
               TextButton(
                 onPressed: () {
-                  //Navigator.pushNamed(context, )
+                  const AppModal().showUnderstandDialog(
+                      context,
+                      'About us',
+                      "Childhood trauma is a problem that's"
+                          " often overlooked in the modern world. "
+                          "There are various ways in which it manifests itself,"
+                          " both in one's early years and adulthood. "
+                          "It truly impacts all spheres of a person's life, "
+                          "from mental to physical health, "
+                          "from behavior to relationships. "
+                          "Childhood trauma can ruin people's lives by making "
+                          "it hard for them to develop and study at an average "
+                          "pace. It lowers one's chances of getting a good "
+                          "education, building a strong and healthy family,"
+                          " and can significantly shorten an individual's life"
+                          " span.All the terrible effects can be prevented. "
+                          "Paying attention to children and creating safe spaces"
+                          " for them can save thousands of lives, "
+                          "as well as help improve the global quality of "
+                          "life and ensure a greater future for everyone.");
                 },
                 child: const Text(
                   'Learn more',
@@ -94,21 +130,5 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       );
 
-  Widget _drawBarHeader() => DrawerHeader(
-        child: UserAccountsDrawerHeader(
-          currentAccountPicture: Container(
-              decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-            color: Color(0x40F5F5FF),
-          )),
-          margin: EdgeInsets.zero,
-          decoration: BoxDecoration(
-            gradient:
-                LinearGradient(colors: [Colors.indigo, Colors.indigo[300]!]),
-          ),
-          accountName: const Text('Shiza Marina'),
-          accountEmail: const Text("shiza@hacknheal.aaaa"),
-        ),
-        padding: EdgeInsets.zero,
-      );
+  Widget _drawBarHeader() => User();
 }

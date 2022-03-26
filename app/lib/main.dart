@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hack_n_heal/pages/account.dart';
-import 'package:hack_n_heal/pages/artictes.dart';
-import 'package:hack_n_heal/pages/conversation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hack_n_heal/blocs/threads_cubit.dart';
+import 'package:hack_n_heal/blocs/topics_cubit.dart';
+import 'package:hack_n_heal/pages/articles.dart';
+import 'package:hack_n_heal/pages/topics.dart';
 import 'package:hack_n_heal/pages/landing.dart';
+import 'package:hack_n_heal/pages/partners.dart';
 import 'package:hack_n_heal/pages/settings.dart';
+import 'package:hack_n_heal/uikit/colors.dart';
+import 'package:hack_n_heal/widgets/topic/topic.dart';
+import 'blocs/observer.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
-  runApp(const MyApp());
+  BlocOverrides.runZoned(() => runApp(const MyApp()), blocObserver: Observer());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,15 +26,25 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Hack&Heal',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: const AppColors().primaryColor(),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyHomePage(),
-        '/account': (context) => const Account(),
-        '/conversation': (context) => const Conversation(),
+        '/': (context) => const HomePage(),
+        '/topics': (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => TopicsCubit()),
+            ],
+            child: const Topics()),
+        '/topic': (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => ThreadsCubit()),
+            ],
+            child: const Topic()),
         '/settings': (context) => const Settings(),
         '/articles': (context) => const Articles(),
+        '/partners': (context) => const Partners(),
       },
     );
   }
