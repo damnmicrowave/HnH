@@ -100,24 +100,24 @@ namespace backend
             return messages;
         }
 
-        public async Task WriteMessage(string articleId, string text)
+        public async Task<Object> WriteMessage(string threadId, string text)
         {
-            Object result = client.Query(
+            Object result = await client.Query(
                 Let(
                     "userId", Select(Arr("id"), CurrentIdentity()),
-                    "comment", Create(
-                        Collection("comments"),
+                    "message", Create(
+                        Collection("messages"),
                         Obj(
                             "data", Obj(
-                            "article", Ref(Collection("articles"), articleId),
-                            "user", Ref(Collection("users"), Var("userId")),
-                            "text", text
+                                "thread", Ref(Collection("threads"), threadId),
+                                "user", Ref(Collection("users"), Var("userId")),
+                                "text", text
                             )
                         )
                     ),
-                    "id", Select(Arr("ref", "id"), Var("comment")),
-                    "text", Select(Arr("data", "text"), Var("comment")),
-                    "datetime", Select(Arr("ts"), Var("comment")),
+                    "id", Select(Arr("ref", "id"), Var("message")),
+                    "text", Select(Arr("data", "text"), Var("message")),
+                    "datetime", Select(Arr("ts"), Var("message")),
                     "object", Obj(
                         "id", Var("id"),
                         "datetime", Var("datetime"),
@@ -131,6 +131,8 @@ namespace backend
                     "text", Var("text")
                 )
             ).In(Var("object")));
+            return result;
+
         }
 
         public FaunaDB()

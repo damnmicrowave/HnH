@@ -77,3 +77,9 @@ public class JsonConstructor
     }
 }
 
+public class MessageJsonDecoder
+{
+    public string SECRET { get; set; }
+    public Dictionary<string, string> data { get; set; }
+}
+
