@@ -5,6 +5,8 @@ import { Top } from '../Top/Top'
 import { useEffect, useState } from 'react'
 import { api } from 'pages/app/api'
 import { Article, Comment } from 'pages/app/types'
+import { Loading } from '../../components'
+
 
 export const ArticlePage = ({ articleId }: ArticlePageProps): JSX.Element => {
   const [article, setArticle] = useState<Article>()
@@ -25,7 +27,7 @@ export const ArticlePage = ({ articleId }: ArticlePageProps): JSX.Element => {
     })()
   })
 
-  if (!article) return <>Loading...</>
+  if (!article) return <Loading />
 
   return (
     <div className={styles.wrapper}>
