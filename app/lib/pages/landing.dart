@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hack_n_heal/uikit/button.dart';
 import 'package:hack_n_heal/uikit/colors.dart';
-import 'package:hack_n_heal/widgets/User.dart';
+import 'package:hack_n_heal/widgets/user.dart';
 
 import '../uikit/modals.dart';
+import '../widgets/user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -130,5 +131,5 @@ class _HomePageState extends State<HomePage> {
         },
       );
 
-  Widget _drawBarHeader() => User();
+  Widget _drawBarHeader() => const User();
 }
