@@ -1,4 +1,4 @@
 
 export default interface TopProps {
-	variant: 'article' | 'topic' | 'discussion';
+	variant: 'article' | 'topic' | 'thread';
 }

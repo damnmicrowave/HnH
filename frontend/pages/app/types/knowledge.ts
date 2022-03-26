@@ -1,7 +1,8 @@
 import { GenericResponse } from '@api/_app'
 import { User } from './core'
 
-type Article = {
+export type Article = {
+  id: string
   datetime: number
   name: string
   author: User
@@ -14,11 +15,17 @@ export type ArticlesParams = {
   } & GenericResponse
 }
 
-type Comment = {
+export type ArticleParams = {
+  response: {
+    object?: Article
+  } & GenericResponse
+}
+
+export type Comment = {
   id: string
   user: User
   text: string
-  datetime: string
+  datetime: number
 }
 
 export type CommentsParams = {

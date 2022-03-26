@@ -1,10 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import {
-  GenericResponse,
-  getClient,
-  promise,
-  query
-} from '@api/_app'
+import { GenericResponse, getClient, promise, query } from '@api/_app'
 import q from 'faunadb'
 
 type UserSecret = {

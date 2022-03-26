@@ -3,6 +3,7 @@ import {
   LoginParams,
   SignupParams,
   ArticlesParams,
+  ArticleParams,
   CommentsParams,
   CreateCommentParams,
   TopicsParams,
@@ -18,6 +19,7 @@ export const api = {
   },
   knowledge: {
     articles: registerEndpoint<ArticlesParams>('knowledge/articles', 'get'),
+    article: registerEndpoint<ArticleParams>('knowledge/article', 'get'),
     comments: registerEndpoint<CommentsParams>('knowledge/comments', 'get'),
     createComment: registerEndpoint<CreateCommentParams>(
       'knowledge/comments',

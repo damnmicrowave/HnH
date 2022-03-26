@@ -5,29 +5,25 @@ import { Tag } from '../Tag/Tag'
 import { Star } from '../Star/Star'
 import ArrowIcon from './Arrow.svg'
 import Link from 'next/link'
+import { PropsWithChildren } from 'react'
 
 export const Card = ({
-  children,
-  title,
-  href = '#',
-  isChosen = false,
-  className,
+  object,
   variant,
-  ...props
-}: CardProps): JSX.Element => {
+  children
+}: PropsWithChildren<CardProps>): JSX.Element => {
   return (
-    <div className={styles.card} {...props}>
+    <div className={styles.card}>
       <P tag="h1" className={styles.title}>
-        {title}
+        {object.name}
       </P>
       <Star className={styles.star} />
       {variant !== 'topic' && <Tag className={styles.tag}>theme</Tag>}
       <P className={styles.info}>{children}</P>
 
-      {variant == 'topic' && <Link href='/topic' passHref><ArrowIcon className={styles.arrow} /></Link>}
-      {variant == 'article' && <Link href='/article' passHref><ArrowIcon className={styles.arrow} /></Link>}
-      {variant == 'discussion' && <Link href='/discussion' passHref><ArrowIcon className={styles.arrow} /></Link>}
-      
+      <Link href={`/${variant}/${object.id}`}>
+        <ArrowIcon className={styles.arrow} />
+      </Link>
     </div>
   )
 }

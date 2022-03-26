@@ -1,11 +1,9 @@
 import type { NextPage } from 'next'
-import { withLayout } from '../layout/Layout';
-import { DiscussionPage } from '../pages-components';
+import { withLayout } from '../layout/Layout'
+import { DiscussionPage } from '../pages-components'
 
-function Disscussion({  }): JSX.Element {
-  return (
-    <DiscussionPage />
-  );
+function Disscussion({}): JSX.Element {
+  return <DiscussionPage />
 }
 
-export default withLayout(Disscussion);
+export default withLayout(Disscussion)

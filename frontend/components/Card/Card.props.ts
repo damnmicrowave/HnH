@@ -1,9 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import { Article, Thread, Topic } from 'pages/app/types'
 
-export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    children?: ReactNode;
-    isChosen?: boolean;
-    title?: string;
-    href?: string;
-    variant: 'article' | 'topic' | 'discussion';
+export interface CardProps {
+  object: Article | Topic | Thread
+  variant: 'article' | 'topic' | 'thread'
 }

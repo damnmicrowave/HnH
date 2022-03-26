@@ -1,7 +1,7 @@
 import { GenericResponse } from '@api/_app'
 import { User } from './core'
 
-type Topic = {
+export type Topic = {
   id: string
   name: string
 }
@@ -12,7 +12,7 @@ export type TopicsParams = {
   } & GenericResponse
 }
 
-type Thread = {
+export type Thread = {
   id: string
   name: string
   user: User
@@ -26,7 +26,7 @@ export type ThreadsParams = {
   } & GenericResponse
 }
 
-type Message = {
+export type Message = {
   id: string
   text: string
   user: User
