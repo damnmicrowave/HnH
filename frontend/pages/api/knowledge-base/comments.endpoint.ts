@@ -4,7 +4,7 @@ import { Comment, Comments, createComment, getComments } from './knowledge-base'
 
 interface Request extends NextApiRequest {
   query: {
-    articleId: string
+    id: string
   }
   body: {
     secret: string
@@ -24,7 +24,7 @@ export default async function handler(
   res: NextApiResponse<Response>
 ) {
   if (req.method === 'GET') {
-    const { articleId } = req.query
+    const { id: articleId } = req.query
     const { response, error } = await getComments(articleId)
 
     if (error || !response)
