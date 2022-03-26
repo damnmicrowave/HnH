@@ -5,9 +5,9 @@ import { P } from '../P/P';
 
 export const Article = ({ title, children, className, ...props }: ArticleProps): JSX.Element => {
 	return(
-		<>
+		<div>
 			<P tag='h2'>{title}</P>
 			<P>{children}</P>
-		</>
+		</div>
 	);
 };

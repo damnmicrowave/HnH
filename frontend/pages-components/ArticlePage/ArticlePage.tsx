@@ -9,10 +9,12 @@ import { Partners } from '../Partners/Partners';
 export const ArticlePage = ({ ...props }: ArticlePageProps): JSX.Element => {
     return (
 		<div className={styles.wrapper}>
-			<Article title='Article title'>Article body</Article>
+			<Article title='Article title' className={styles.article}>Article body</Article>
 			<div className={styles.top}><Top/></div>
-			<Thread className={styles.top} username='user111' date={new Date()} comment='Sample thread' />
-			<NewThread username='user123'></NewThread>
+			<div className={styles.comments}>
+				<Thread className={styles.top} username='user111' date={new Date()} comment='Sample thread' />
+				<NewThread username='user123'></NewThread>
+			</div>
 		</div>
     );
 };

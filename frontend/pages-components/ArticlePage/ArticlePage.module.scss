@@ -3,7 +3,33 @@
 .wrapper {
 	display: grid;
 	gap: 20px;
-
+	grid-template-columns: 1fr auto;
+	grid-template-rows: 1fr auto;
+	grid-template-areas: 
+	"article top"
+	"comments comments"	;
+}
+.article {
+	grid-area: article;
+}
+.top {
+	grid-area: top;
+}
+.comments {
+	grid-area: comments;
 }
 
+@media (max-width: 765px) {
+	.wrapper {
+		display: grid;
+		gap: 10px;
+		grid-template-rows: 1fr auto;
+		grid-template-areas: 
+		"article"
+		"comments";
+	}
+	.top {
+		display: none !important;
+	}
+}
 
