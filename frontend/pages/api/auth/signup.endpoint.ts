@@ -22,7 +22,7 @@ interface Request extends NextApiRequest {
 }
 
 interface Response extends GenericResponse {
-  data?: {
+  object?: {
     secret: string
   }
 }
@@ -56,5 +56,5 @@ export default async function handler(
       error: 'User with this e-mail already exists'
     })
 
-  res.status(200).json({ status: 'success', data: response })
+  res.status(200).json({ status: 'success', object: response })
 }

@@ -18,9 +18,3 @@ export const query = <Data>(
   expr: ExprArg,
   options?: QueryOptions
 ) => client.query<Data>(expr, options)
-
-export const documentQuery = <Data>(
-  client: Client,
-  expr: ExprArg,
-  options?: QueryOptions
-) => client.query<DBResponse<Data>>(expr, options)
