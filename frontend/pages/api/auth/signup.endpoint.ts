@@ -7,15 +7,16 @@ import {
 } from '@api/_app'
 import q from 'faunadb'
 
-type UserSecret = {
+type SignupResult = {
   secret: string
-}
+} | null
 
 interface Request extends NextApiRequest {
   body: {
     data: {
       email: string
       password: string
+      username: string
     }
   }
 }
@@ -36,22 +37,23 @@ export default async function handler(
       error: 'Wrong method'
     })
 
-  const { email, password } = req.body.data
+  const { email, password, username } = req.body.data
 
   const client = getClient()
-  const loginQuery = query<UserSecret>(
+  const signupQuery = query<SignupResult>(
     client,
-    q.Call(q.Function('loginUser'), {
+    q.Call(q.Function('createUser'), {
       email,
-      password
+      password,
+      username
     })
   )
-  const { response, error } = await promise<UserSecret>(loginQuery)
+  const { response, error } = await promise<SignupResult>(signupQuery)
 
   if (error || !response)
-    return res.status(404).json({
+    return res.status(400).json({
       status: 'error',
-      error: 'Invalid email or password'
+      error: 'User with this e-mail already exists'
     })
 
   res.status(200).json({ status: 'success', object: response })
