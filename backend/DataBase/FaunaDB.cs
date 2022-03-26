@@ -75,6 +75,30 @@ namespace backend
             return threads;
         }
 
+        public async Task<object> ReturnMessages(string threadid)
+        {
+            Value result = await client.Query(
+               Call(Function("getMessages"), threadid)
+           //"327135066980352192"
+           );
+            IResult<Value[]> data = result.At("data").To<Value[]>();
+            List<Message> messages = new List<Message>();
+            data.Match(
+                Success: values =>
+                {
+                    foreach (Value value in values)
+                    {
+                        Console.WriteLine(value);
+                        ObjectV author = (ObjectV)value.At("author");
+                        Message msg = new Message((string)value.At("id"), (string)value.At("text"), (string)author.At("username"), (string)author.At("id"), (long)value.At("datetime"));
+                        messages.Add(msg);
+                    }
+                },
+                Failure: reason => Console.WriteLine($"Something went wrong: {reason}")
+                );
+            return messages;
+        }
+
         
     }
 
@@ -109,15 +133,31 @@ namespace backend
 
     }
 
+    public class Message
+    {
+        public string Id { get; set; }
+        public string Text { get; set; }
+        public long datetime { get; set; }
+        public User user { get; set; }
+        public Message(string id, string text, string authorname, string authorid, long datetime)
+        {
+            this.Id = id;
+            this.Text = text;
+
+            this.user = new User(authorid, authorname);
+            this.datetime = datetime;
+        }
+    }
+
     public class User
     {
-        public string UserId { get; set; }
-        public string UserName { get; set; }
+        public string userid { get; set; }
+        public string username { get; set; }
 
         public User(string userid, string username)
         {
-            this.UserId = userid;
-            this.UserName = username;
+            this.userid = userid;
+            this.username = username;
         }
     }
 }
