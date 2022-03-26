@@ -34,12 +34,11 @@
 
 .replyBlock {
 	grid-area: replyBlock;
-	display: grid;
+	display: none !important;
 	
 	.replyIcon {
 		grid-area: replyIcon;
 		fill: gray;
-
 	}
 	.reply {
 		grid-area: reply;
@@ -66,7 +65,7 @@
 		padding: 10px;
 		.replyBlock{
 			justify-content: flex-end;
-			display: grid;
+			display: hidden !important;
 			grid-template-columns: "1fr auto";
 			grid-template-areas: "replyIcon reply";
 			gap: 5px;

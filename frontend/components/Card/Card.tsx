@@ -23,9 +23,11 @@ export const Card = ({
       <Star className={styles.star} />
       {variant !== 'topic' && <Tag className={styles.tag}>theme</Tag>}
       <P className={styles.info}>{children}</P>
-      <Link href={href} passHref>
-        <ArrowIcon className={styles.arrow} />
-      </Link>
+
+      {variant == 'topic' && <Link href='/topic' passHref><ArrowIcon className={styles.arrow} /></Link>}
+      {variant == 'article' && <Link href='/article' passHref><ArrowIcon className={styles.arrow} /></Link>}
+      {variant == 'discussion' && <Link href='/discussion' passHref><ArrowIcon className={styles.arrow} /></Link>}
+      
     </div>
   )
 }

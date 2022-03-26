@@ -2,6 +2,7 @@ import styles from './Top.module.scss'
 import TopProps from './Top.props'
 import { Card, P, Button } from 'components'
 import { CardProps } from '../../components/Card/Card.props'
+import Link from 'next/link'
 
 export const Top = ({ variant }:CardProps): JSX.Element => {
   // тут надо заменить на данные карточек
@@ -29,7 +30,9 @@ export const Top = ({ variant }:CardProps): JSX.Element => {
 			<Card variant='discussion' title={'title'}>description</Card>
 			</>}
 		</div>
-    	<Button>VIEW ALL</Button>
+		{variant=='topic' && <Link href='/topics' passHref><Button>VIEW ALL</Button></Link>}
+		{variant=='article' && <Link href='/articles' passHref><Button>VIEW ALL</Button></Link>}
+		{variant=='discussion' && <Link href='/discussions' passHref><Button>VIEW ALL</Button></Link>}
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.cards {
+	display: grid;
+	row-gap: 10px;
+	justify-content: space-around;
+	width: 100%;
+
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+}
+
+@media (max-width: 765px) {
+	.cards {
+		display: grid;
+		row-gap: 10px;
+		justify-items: center;
+
+		grid-template-columns: 1fr 1fr;
+	}
+}
