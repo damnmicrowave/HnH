@@ -10,11 +10,11 @@ namespace backend
 {
     class FaunaDB
     {
-        static readonly string ENDPOINT = "https://db.eu.fauna.com";
-        // NOTE: use the correct endpoint for your database's Region Group.
-        static readonly string SECRET = System.Environment.GetEnvironmentVariable("FAUNADB_SECRET")!;
-        FaunaClient client = new FaunaClient(SECRET, ENDPOINT);
-        public Topic topic;
+        public string ENDPOINT = "https://db.eu.fauna.com";
+        // NOTE: use the correct endpoint for your database"s Region Group.
+        public string SECRET = System.Environment.GetEnvironmentVariable("FAUNADB_SECRET")!;
+        FaunaClient client;
+        //public Topic topic;
 
 
         public async Task<List<Topic>> ReturnTopics()
@@ -34,7 +34,8 @@ namespace backend
             List<Topic> topics = new List<Topic>();
 
             data.Match(
-                Success: values => {
+                Success: values =>
+                {
                     foreach (Value value in values)
                     {
                         RefV valueRef = (RefV)value.At("ref");
@@ -65,7 +66,7 @@ namespace backend
                     {
                         ObjectV thread = (ObjectV)value;
                         ObjectV author = (ObjectV)thread.At("author");
-                        
+
                         Thread threadData = new Thread((string)thread.At("id"), (string)thread.At("name"), (string)author.At("username"), (string)author.At("id"), (long)thread.At("datetime"));
                         threads.Add(threadData);
                     }
@@ -99,79 +100,50 @@ namespace backend
             return messages;
         }
 
-        
-    }
-
-
-    public class Topic
-    {
-        [FaunaField("name")]
-        public string Name { get; set; }
-        public string Id { get; set; }
-        [FaunaConstructor]
-        public Topic(string name)
+        public async Task WriteMessage(string articleId, string text)
         {
-            Name = name;
+            Object result = client.Query(
+                Let(
+                    "userId", Select(Arr("id"), CurrentIdentity()),
+                    "comment", Create(
+                        Collection("comments"),
+                        Obj(
+                            "data", Obj(
+                            "article", Ref(Collection("articles"), articleId),
+                            "user", Ref(Collection("users"), Var("userId")),
+                            "text", text
+                            )
+                        )
+                    ),
+                    "id", Select(Arr("ref", "id"), Var("comment")),
+                    "text", Select(Arr("data", "text"), Var("comment")),
+                    "datetime", Select(Arr("ts"), Var("comment")),
+                    "object", Obj(
+                        "id", Var("id"),
+                        "datetime", Var("datetime"),
+                        "user", Obj(
+                            "id", Var("userId"),
+                            "username", Select(
+                            Arr("data", "username"),
+                            Get(Ref(Collection("users"), Var("userId")))
+                        )
+                    ),
+                    "text", Var("text")
+                )
+            ).In(Var("object")));
         }
-    }
-  
 
-    public class Thread
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public long datetime { get; set; }
-        public User user { get; set; }
-        public Thread(string id, string name, string authorname, string authorid, long datetime)
+        public FaunaDB()
         {
-            this.Id = id;
-            this.Name = name;
-
-            this.user = new User(authorid, authorname);
-            this.datetime = datetime;
+            client = new FaunaClient(this.SECRET, this.ENDPOINT);
         }
 
-    }
-
-    public class Message
-    {
-        public string Id { get; set; }
-        public string Text { get; set; }
-        public long datetime { get; set; }
-        public User user { get; set; }
-        public Message(string id, string text, string authorname, string authorid, long datetime)
+        public FaunaDB(string secret)
         {
-            this.Id = id;
-            this.Text = text;
-
-            this.user = new User(authorid, authorname);
-            this.datetime = datetime;
-        }
-    }
-
-    public class User
-    {
-        public string userid { get; set; }
-        public string username { get; set; }
-
-        public User(string userid, string username)
-        {
-            this.userid = userid;
-            this.username = username;
+            this.SECRET = secret;
+            client = new FaunaClient(this.SECRET, this.ENDPOINT);
         }
     }
 }
 
 
-public class JsonConstructor
-{
-    public Dictionary<string, object> jsonData = new Dictionary<string, object>()
-        {
-            {"status", "succsess" }
-        };
-
-    public JsonConstructor(object elements)
-    {
-        jsonData["object"] = elements;
-    }
-}

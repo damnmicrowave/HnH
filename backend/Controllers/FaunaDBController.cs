@@ -46,6 +46,12 @@ namespace backend.Controllers
             JsonConstructor jsonData = new JsonConstructor(data);
             return jsonData.jsonData;
         }
+
+        [HttpGet("messagew")]
+        public async Task WriteMessage([FromBody]string secret)
+        {
+            Console.WriteLine(secret);
+        }
     }
 
 
