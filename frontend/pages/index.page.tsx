@@ -10,7 +10,7 @@ function Home({  }): JSX.Element {
       <Button>START QUIZ</Button>
       <Tag>tag</Tag>
       <Star />
-      <Card>hello</Card>
+      <Card title={'TiTle'}>It is my first card</Card>
     </>
   );
 }
