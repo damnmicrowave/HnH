@@ -1,7 +1,7 @@
 import { StarProps } from './Star.props';
 import styles from './Star.module.scss';
 import cn from 'classnames';
-import StarIcon from './star.svg';
+import StarIcon from './Star.svg';
 import { useState, useEffect, KeyboardEvent } from 'react';
 
 export const Star = ({ isChosen=false, setIsChosen, ...props }: StarProps): JSX.Element => {
