@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 using FaunaDB.Types;
 
 namespace backend.Controllers
@@ -8,11 +9,35 @@ namespace backend.Controllers
     public class FaunaDBController : ControllerBase
     {
         [HttpGet("topics")]
-        public async Task<Topic> GetTopics()
+        public async Task<object> GetTopics()
         {
             FaunaDB fauna = new FaunaDB();
-            Topic topic = await fauna.ReturnTopics();
-            return topic;
+
+            List<Topic> topics = await fauna.ReturnTopics();
+
+            /*Dictionary<string, Dictionary<string, Topic>> topicsJson = new Dictionary<string, Dictionary<string, Topic>>();
+
+            topicsJson["object"] = new Dictionary<string, Topic>();
+            for (int i = 0; i < topics.Count; i++)
+            {
+                topicsJson["object"][i.ToString()] = topics[i];
+
+            }*/
+            JsonConstructor jsonData = new JsonConstructor(topics);
+            return jsonData.jsonData;
+        }
+
+        [HttpGet("thread")]
+        public async Task<object> GetThreads([FromQuery(Name = "id")]string id)
+        {
+            FaunaDB fauna = new FaunaDB();
+            var data = await fauna.ReturnThreads(id);
+
+
+            JsonConstructor jsonData = new JsonConstructor(data);
+            return jsonData.jsonData;
         }
     }
+
+
 }
