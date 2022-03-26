@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hack_n_heal/uikit/button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -13,58 +15,65 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: SvgPicture.asset(
-          './assets/images/logo.svg',
+          './assets/files/logo.svg',
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.menu),
-            iconSize: 40,
-            onPressed: () {},
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
           )
         ],
+      ),
+      drawer: Drawer(
+        // Левая боковая панель
+        child: ListView(
+          children: <Widget>[
+            _drawBarHeader(),
+            _drawBarItem(Icons.face, "My account", '/account'),
+            _drawBarItem(
+                Icons.supervised_user_circle, "Conversation", '/conversation'),
+            _drawBarItem(Icons.article, "Articles", '/article'),
+          ],
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          const Text.rich(
-            TextSpan(
-                text: 'Hello in ',
-                style: TextStyle(
-                    fontSize: 24, color: Color(0xFF6288BD), letterSpacing: 2),
-                children: [
-                  TextSpan(
-                      text: 'ACE',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF202C3D),
-                      )),
-                  TextSpan(
-                      text: 'hub! \n',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  TextSpan(text: 'We do lalalaa'),
-                ]),
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text.rich(
+              TextSpan(
+                  text: 'Hello in ',
+                  style: TextStyle(
+                      fontSize: 24, color: Color(0xFF6288BD), letterSpacing: 2),
+                  children: [
+                    TextSpan(
+                        text: 'ACE',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: Color(0xFF202C3D),
+                        )),
+                    TextSpan(
+                        text: 'hub! ',
+                        style: TextStyle(fontWeight: FontWeight.w900)),
+                    TextSpan(text: 'We do lalalaaxxxxxxxxxxx'),
+                  ]),
+            ),
           ),
           Column(
             children: [
-              Container(
-                height: 150,
-                margin: const EdgeInsets.all(20),
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('START QUIZ',
-                        style: TextStyle(fontSize: 32))),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text('*', style: TextStyle(color: Colors.red)),
-                  Text(
-                    'test will help you with this and that and',
-                    overflow: TextOverflow.visible,
-                    softWrap: true,
-                  ),
-                ],
+              const AppButton().bigButton('START QUIZ'),
+              const AppButton().middleButton('LEAVE A REQUEST'),
+              TextButton(
+                onPressed: () {
+                  //Navigator.pushNamed(context, )
+                },
+                child: const Text(
+                  'Learn more',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
             ],
           ),
@@ -72,4 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  Widget _drawBarItem(icon, name, url) => ListTile(
+        leading: Icon(icon, color: Colors.indigo),
+        title: Text(
+          name,
+          textScaleFactor: 1.2,
+        ),
+        onTap: () {
+          Navigator.of(context).pop(); // Скрыть боковую панель
+          Navigator.pushNamed(context, url);
+        },
+      );
+
+  Widget _drawBarHeader() => DrawerHeader(
+        child: UserAccountsDrawerHeader(
+          currentAccountPicture: Container(
+              decoration: const BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: Color(0x40F5F5FF),
+          )),
+          margin: EdgeInsets.zero,
+          decoration: BoxDecoration(
+            gradient:
+                LinearGradient(colors: [Colors.indigo, Colors.indigo[300]!]),
+          ),
+          accountName: const Text('Shiza Marina'),
+          accountEmail: const Text("shiza@hacknheal.aaaa"),
+        ),
+        padding: EdgeInsets.zero,
+      );
 }

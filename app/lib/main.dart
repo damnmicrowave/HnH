@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'pages/landing.dart';
-
+import 'package:hack_n_heal/pages/account.dart';
+import 'package:hack_n_heal/pages/artictes.dart';
+import 'package:hack_n_heal/pages/conversation.dart';
+import 'package:hack_n_heal/pages/landing.dart';
+import 'package:hack_n_heal/pages/settings.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -22,6 +25,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(),
+        '/account': (context) => const Account(),
+        '/conversation': (context) => const Conversation(),
+        '/settings': (context) => const Settings(),
+        '/articles': (context) => const Articles(),
       },
     );
   }
