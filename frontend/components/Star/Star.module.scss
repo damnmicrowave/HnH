@@ -1,0 +1,9 @@
+@import '../../styles//common';
+
+.star {
+	fill: rgba(98, 136, 189, 0.2);
+	cursor: pointer;
+}
+.starChosen {
+	fill: map-get($map: $col, $key: medium);
+}
