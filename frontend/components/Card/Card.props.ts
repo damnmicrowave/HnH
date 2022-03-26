@@ -5,4 +5,5 @@ export interface CardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
     isChosen?: boolean;
     title: string;
     href?: string;
+    variant: 'article' | 'topic' | 'discussion';
 }
