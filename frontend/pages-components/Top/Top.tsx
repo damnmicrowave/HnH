@@ -1,6 +1,7 @@
 import styles from './Top.module.scss'
 
 import { Card, P, Button } from 'components'
+import { api } from 'pages/app/api'
 
 export const Top = (): JSX.Element => {
   // тут надо заменить на данные карточек
@@ -15,7 +16,20 @@ export const Top = (): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <P tag="h2">TOP OF ARTICLES</P>
+      <P
+        onClick={async () => {
+          const response = await api.auth.login({
+            data: {
+              email: 'damnmicrowave@gmail.com',
+              password: '#Jvpg2q8"UwU'
+            }
+          })
+          console.log(response)
+        }}
+        tag="h2"
+      >
+        TOP OF ARTICLES
+      </P>
       <div className={styles.cards}>{listCards}</div>
       <Button>VIEW ALL</Button>
     </div>
