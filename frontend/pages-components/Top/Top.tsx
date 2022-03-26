@@ -16,20 +16,7 @@ export const Top = (): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <P
-        onClick={async () => {
-          const response = await api.auth.login({
-            data: {
-              email: 'damnmicrowave@gmail.com',
-              password: '#Jvpg2q8"UwU'
-            }
-          })
-          console.log(response)
-        }}
-        tag="h2"
-      >
-        TOP OF ARTICLES
-      </P>
+      <P tag="h2">TOP OF ARTICLES</P>
       <div className={styles.cards}>{listCards}</div>
       <Button>VIEW ALL</Button>
     </div>

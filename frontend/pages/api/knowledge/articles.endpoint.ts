@@ -1,15 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiResponse } from 'next'
 import { GenericResponse } from '@api/_app'
-import { type Articles, getArticles } from './knowledge-base'
-
-interface Request extends NextApiRequest {
-  body: {
-    data: {
-      email: string
-      password: string
-    }
-  }
-}
+import { type Articles, getArticles } from './knowledge'
 
 interface Response extends GenericResponse {
   object?: Articles
