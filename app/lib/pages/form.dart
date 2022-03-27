@@ -16,7 +16,7 @@ class FormPageState extends State<FormPage> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        color :Color(0xFFE2E5F8),
+        color: Color(0xFFE2E5F8),
         padding: EdgeInsets.only(top: 120, left: 40, right: 40),
         child: Column(
           children: [
@@ -90,19 +90,20 @@ class FormPageState extends State<FormPage> {
                         height: 50,
                         margin: EdgeInsets.only(top: 20),
                         child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors().primaryColor()),
-                          ),
-                          child: const Text(
-                            'Log in',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                letterSpacing: 1.5),
-                          ),
-                          onPressed: null,
-                        )),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  AppColors().primaryColor()),
+                            ),
+                            child: const Text(
+                              'Log in',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  letterSpacing: 1.5),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/landing');
+                            })),
                   ),
                 ],
               ),
