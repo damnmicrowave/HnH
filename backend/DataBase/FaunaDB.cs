@@ -113,9 +113,9 @@ namespace backend
             return messages;
         }
 
-        public async Task<Object> WriteMessage(string threadId, string text)
+        public async Task<Message> WriteMessage(string threadId, string text)
         {
-            Object result = await client.Query(
+            ObjectV result = (ObjectV)await client.Query(
                 Let(
                     "userId", Select(Arr("id"), CurrentIdentity()),
                     "message", Create(
@@ -144,7 +144,9 @@ namespace backend
                     "text", Var("text")
                 )
             ).In(Var("object")));
-            return result;
+            ObjectV author = (ObjectV)result.At("author");
+            Message msg = new Message((string)result.At("id"), (string)result.At("text"), (string)author.At("username"), (string)author.At("id"), (long)result.At("datetime"));
+            return msg;
 
         }
 

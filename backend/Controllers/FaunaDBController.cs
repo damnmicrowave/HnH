@@ -5,7 +5,7 @@ using FaunaDB.Types;
 namespace backend.Controllers
 {
     [ApiController]
-    [Route("api/discussions")]
+    [Route("api/community")]
     public class FaunaDBController : ControllerBase
     {
         [HttpGet("topics")]
@@ -48,12 +48,14 @@ namespace backend.Controllers
         }
 
         [HttpPost("messages")]
-        public async Task WriteMessage([FromBody] JsonElement jsondata)
+        public async Task<object> WriteMessage([FromBody] JsonElement jsondata)
         {
             MessageJsonDecoder data = JsonSerializer.Deserialize<MessageJsonDecoder>(jsondata);
             FaunaDB fauna = new FaunaDB(data.secret);
-            var result = await fauna.WriteMessage(data.data["threadId"], data.data["text"]);
-
+            Message result = await fauna.WriteMessage(data.data["threadId"], data.data["text"]);
+            JsonConstructor json = new JsonConstructor(result);
+            return json.jsonData;
+            
         }
     }
 
