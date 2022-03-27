@@ -7,8 +7,6 @@ import { api } from 'pages/app/api'
 import TopProps from 'pages-components/Top/Top.props'
 
 export const Top = ({ variant }: TopProps): JSX.Element => {
-  // тут надо заменить на данные карточек
-  // const [topics, setTopics] = useState<Topic[]>()
   const [articles, setArticles] = useState<Article[]>()
   const [topics, setTopics] = useState<Topic[]>()
   const [threads, setThreads] = useState<Thread[]>()
