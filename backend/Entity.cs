@@ -60,12 +60,12 @@ namespace backend
 
     public class User
     {
-        public string userid { get; set; }
+        public string id { get; set; }
         public string username { get; set; }
 
         public User(string userid, string username)
         {
-            this.userid = userid;
+            this.id = userid;
             this.username = username;
         }
         public User(string userid)
