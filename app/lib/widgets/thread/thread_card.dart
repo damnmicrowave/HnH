@@ -37,7 +37,7 @@ class _ThreadCardState extends State<ThreadCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        width: 200,
+                        width: 220,
                         height: 50,
                         padding: const EdgeInsets.only(top:12),
                         child: const AppText().tileText(widget.name)),
@@ -58,7 +58,7 @@ class _ThreadCardState extends State<ThreadCard> {
                           ),
                           borderRadius: BorderRadius.circular(5)),
                       child: TextButton(
-                        child: const AppText().buttonText('Go to discussion'),
+                        child: const AppText().buttonText('View thread'),
                         onPressed: () {},
                       ),
                     ),
