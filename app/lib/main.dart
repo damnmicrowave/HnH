@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => FormPage(),
+        '/landing': (context) => const HomePage(),
         '/topics': (context) => MultiBlocProvider(providers: [
               BlocProvider(create: (_) => TopicsCubit()),
             ], child: const Topics()),
