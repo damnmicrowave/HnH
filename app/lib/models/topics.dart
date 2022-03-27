@@ -9,7 +9,7 @@ class TopicsModel extends Equatable {
 
   factory TopicsModel.fromJson(Map<String, dynamic> json) => TopicsModel(
         objects:
-            List<Topic>.from(json["objects"].map((x) => Topic.fromJson(x))),
+            List<Topic>.from(json["object"].map((x) => Topic.fromJson(x))),
       );
 
   @override

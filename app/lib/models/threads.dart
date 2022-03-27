@@ -9,7 +9,7 @@ class ThreadsModel {
   List<Thread> objects;
 
   factory ThreadsModel.fromJson(Map<String, dynamic> json) => ThreadsModel(
-    objects: List<Thread>.from(json["objects"].map((x) => Thread.fromJson(x))),
+    objects: List<Thread>.from(json["object"].map((x) => Thread.fromJson(x))),
   );
 }
 

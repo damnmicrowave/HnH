@@ -8,8 +8,9 @@ class ArticlesModel {
   List<Article> objects;
 
   factory ArticlesModel.fromJson(Map<String, dynamic> json) => ArticlesModel(
-    objects: List<Article>.from(json["objects"].map((x) => Article.fromJson(x))),
-  );
+        objects:
+            List<Article>.from(json["object"].map((x) => Article.fromJson(x))),
+      );
 }
 
 class Article {
@@ -28,10 +29,10 @@ class Article {
   String content;
 
   factory Article.fromJson(Map<String, dynamic> json) => Article(
-    id: json["id"],
-    name: json["name"],
-    datetime: json["datetime"],
-    author: UserModel.fromJson(json["author"]),
-    content: json["content"],
-  );
+        id: json["id"],
+        name: json["name"],
+        datetime: json["datetime"],
+        author: UserModel.fromJson(json["author"]),
+        content: json["content"],
+      );
 }

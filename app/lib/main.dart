@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_n_heal/blocs/article_cubit.dart';
+import 'package:hack_n_heal/blocs/articles_cubit.dart';
 import 'package:hack_n_heal/blocs/threads_cubit.dart';
 import 'package:hack_n_heal/blocs/topics_cubit.dart';
 import 'package:hack_n_heal/pages/articles.dart';

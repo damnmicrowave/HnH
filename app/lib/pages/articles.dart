@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_n_heal/blocs/article_cubit.dart';
-import 'package:hack_n_heal/models/article.dart';
+import 'package:hack_n_heal/blocs/articles_cubit.dart';
+import 'package:hack_n_heal/models/articles.dart';
 
 import 'package:hack_n_heal/uikit/annotation.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:hack_n_heal/models/article.dart';
+import 'package:hack_n_heal/models/articles.dart';
 import 'package:hack_n_heal/models/threads.dart';
 import 'package:hack_n_heal/models/topics.dart';
 import 'package:hack_n_heal/models/user.dart';
@@ -65,7 +65,7 @@ class Api {
     final success = response.statusCode == 200;
     if (success) {
       final dataJson = json.decode(response.body);
-      final topics = TopicsModel.fromJson(dataJson['object']);
+      final topics = TopicsModel.fromJson(dataJson);
       return topics;
     }
     return null;
@@ -77,7 +77,7 @@ class Api {
     final success = response.statusCode == 200;
     if (success) {
       final dataJson = json.decode(response.body);
-      final threads = ThreadsModel.fromJson(dataJson['object']);
+      final threads = ThreadsModel.fromJson(dataJson);
       return threads;
     }
     return null;
@@ -89,7 +89,7 @@ class Api {
     final success = response.statusCode == 200;
     if (success) {
       final dataJson = json.decode(response.body);
-      final articles = ArticlesModel.fromJson(dataJson['object']);
+      final articles = ArticlesModel.fromJson(dataJson);
       return articles;
     }
     return null;
