@@ -17,6 +17,9 @@ export const ArticlePage = ({ articleId }: ArticlePageProps): JSX.Element => {
       const response = await api.knowledge.article({
         query: `articleId=${articleId}`
       })
+      if (response.data === undefined) {
+         return;
+       }
       setArticle(response.data.object)
     })();
   })
@@ -26,6 +29,9 @@ export const ArticlePage = ({ articleId }: ArticlePageProps): JSX.Element => {
       const response = await api.knowledge.comments({
       query: `articleId=${articleId}`
     })
+    if (response.data === undefined) {
+         return;
+       }
     setComments(response.data.object)
   })();
   })

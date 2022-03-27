@@ -9,7 +9,11 @@ import { WideTop } from '../WideTop/WideTop';
 import { Article } from '../../pages/app/types';
 
 export const ArticlesPage = ({ objects }: ArticlesPageProps): JSX.Element => {
-    return (
+		if (objects === undefined) {
+			return <></>
+		}
+		else {
+			return (
 		<div className={styles.wrapper}>
 			<P tag='h1' className={styles.title}>Our articles</P>
 			<div className={styles.widetop}><WideTop objects={objects} variant='article' /></div>
@@ -18,4 +22,5 @@ export const ArticlesPage = ({ objects }: ArticlesPageProps): JSX.Element => {
 			</div>
 		</div>
     );
-};
+}
+}
