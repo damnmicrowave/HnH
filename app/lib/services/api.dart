@@ -17,9 +17,11 @@ class Api {
 
   Future<bool> login(String email, String password) async {
     final uri = Uri.parse(baseUrl + 'auth/login');
-    final response = await client.post(uri, body: {
-      'data': {'email': email, 'password': password}
-    });
+    final response = await client.post(uri,
+        body: json.encode({
+          'data': {'email': email, 'password': password}
+        }),
+        headers: {'Content-Type': 'application/json'});
     final success = response.statusCode == 200;
     if (success) {
       String secret = json.decode(response.body)['object']['secret'];
@@ -31,9 +33,11 @@ class Api {
 
   Future<bool> signup(String email, String password, String username) async {
     final uri = Uri.parse(baseUrl + 'auth/signup');
-    final response = await client.post(uri, body: {
-      'data': {'email': email, 'password': password, 'username': username}
-    });
+    final response = await client.post(uri,
+        body: json.encode({
+          'data': {'email': email, 'password': password, 'username': username}
+        }),
+        headers: {'Content-Type': 'application/json'});
     final success = response.statusCode == 200;
     if (success) {
       String secret = json.decode(response.body)['object']['secret'];

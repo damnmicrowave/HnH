@@ -15,12 +15,14 @@ class Topic extends StatefulWidget {
 
 class _TopicState extends State<Topic> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    Map arguments = ModalRoute.of(context)?.settings.arguments as Map;
 
     final topicsCubit = context.read<ThreadsCubit>();
     if (topicsCubit.state?.objects == null) {
-      topicsCubit.loadThreads();
+      topicsCubit.loadThreads(arguments['id']);
     }
   }
 

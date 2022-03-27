@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hack_n_heal/uikit/colors.dart';
 
+import '../services/api.dart';
+
 class FormPage extends StatefulWidget {
+  const FormPage({Key? key}) : super(key: key);
+
   @override
   FormPageState createState() {
     return FormPageState();
@@ -11,16 +15,47 @@ class FormPage extends StatefulWidget {
 class FormPageState extends State<FormPage> {
   final _formKey = GlobalKey<FormState>();
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controllers when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void login() async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    scaffoldMessenger.showSnackBar(const SnackBar(
+      content: Text('Logging in...'),
+      duration: Duration(minutes: 1),
+    ));
+
+    final loggedIn = await api.login(
+        emailController.text.toLowerCase(), passwordController.text);
+    scaffoldMessenger.hideCurrentSnackBar();
+    if (!loggedIn) {
+      scaffoldMessenger.showSnackBar(const SnackBar(
+        content: Text('Incorrect e-mail or password'),
+      ));
+      return;
+    }
+
+    Navigator.pushNamed(context, '/landing');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        color: Color(0xFFE2E5F8),
-        padding: EdgeInsets.only(top: 120, left: 40, right: 40),
+        color: const Color(0xFFE2E5F8),
+        padding: const EdgeInsets.only(top: 120, left: 40, right: 40),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: Text.rich(
                 TextSpan(
@@ -50,19 +85,20 @@ class FormPageState extends State<FormPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(left: 20),
-                    margin: EdgeInsets.only(bottom: 10),
+                    padding: const EdgeInsets.only(left: 20),
+                    margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white60),
                     child: TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'acehub@example.com',
                         labelText: 'Email',
                         labelStyle: TextStyle(
                             fontSize: 18,
-                            color: AppColors().primaryColor(),
+                            color: const AppColors().primaryColor(),
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -71,15 +107,16 @@ class FormPageState extends State<FormPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white60),
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: TextFormField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: '',
                         labelText: 'Password',
                         labelStyle: TextStyle(
                             fontSize: 18,
-                            color: AppColors().primaryColor(),
+                            color: const AppColors().primaryColor(),
                             fontWeight: FontWeight.w600),
                       ),
                     ),
@@ -88,11 +125,11 @@ class FormPageState extends State<FormPage> {
                     child: Container(
                         width: 250,
                         height: 50,
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         child: ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  AppColors().primaryColor()),
+                                  const AppColors().primaryColor()),
                             ),
                             child: const Text(
                               'Log in',
@@ -101,9 +138,7 @@ class FormPageState extends State<FormPage> {
                                   fontSize: 24,
                                   letterSpacing: 1.5),
                             ),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/landing');
-                            })),
+                            onPressed: login)),
                   ),
                 ],
               ),
