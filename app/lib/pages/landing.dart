@@ -5,6 +5,7 @@ import 'package:hack_n_heal/uikit/colors.dart';
 import 'package:hack_n_heal/widgets/user.dart';
 
 import '../uikit/modals.dart';
+import '../widgets/user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
