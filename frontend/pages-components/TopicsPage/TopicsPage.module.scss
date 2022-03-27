@@ -1,0 +1,26 @@
+@import '../../styles/common';
+
+.wrapper {
+	display: grid;
+	gap: 20px;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"title"
+		"widetop"
+		"button";
+	justify-items: center;
+}
+
+.title {
+	grid-area: title;
+	justify-self: start;
+}
+
+.widetop {
+	grid-area: widetop;
+}
+
+.button {
+	grid-area: button;
+	justify-self: end;
+}

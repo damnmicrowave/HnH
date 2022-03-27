@@ -7,6 +7,7 @@ type User = {
 }
 
 type Article = {
+  id: string
   datetime: number
   name: string
   author: User
@@ -46,6 +47,15 @@ export const getArticles = async () => {
     )
   )
   return await promise<DBResponse<Articles>>(articlesQuery)
+}
+
+export const getArticle = async (articleId: string) => {
+  const client = getClient()
+  const articleQuery = query<DBResponse<Article>>(
+    client,
+    q.Get(q.Ref(q.Collection('articles'), articleId))
+  )
+  return await promise<DBResponse<Article>>(articleQuery)
 }
 
 export type Comment = {

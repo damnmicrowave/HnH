@@ -1,0 +1,48 @@
+@import '../../styles/common';
+
+.card {
+	width: 220px;
+	min-width: max-content;
+	height: 140px;
+
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+
+	background: #FFFFFF;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: 1fr auto 1fr;
+	grid-template-areas: 
+		"title star"
+		"tag tag"
+		"info arrow";
+	gap: 10px;
+	padding: 10px;
+	align-items: center;
+}
+.card:hover {
+	transform: translateY(-3px);
+}
+.title {
+	grid-area: title;
+}
+.star {
+	grid-area: star;
+}
+.info {
+	grid-area: info;
+	align-self: flex-start;
+	width: 100%;
+}
+.arrow {
+	grid-area: arrow;
+	align-self: flex-start;
+	height: 30px;
+	width: 30px;
+	fill: map-get($col, medium);
+	cursor: pointer;
+}

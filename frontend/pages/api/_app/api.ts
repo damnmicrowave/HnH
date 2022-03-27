@@ -1,7 +1,6 @@
 export interface GenericResponse {
   status: 'success' | 'error'
   error?: string
-  object?: any
 }
 
 // handy wrapper for try-catch to avoid towers of doom

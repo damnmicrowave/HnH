@@ -1,0 +1,10 @@
+@import '../../styles/common';
+
+.tag {
+	width: fit-content;
+	height: 20px;
+	background-color: map-get($col, light);
+	border-radius: 10px;
+	padding: 0 10px;
+	color: white;
+}

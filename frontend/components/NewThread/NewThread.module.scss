@@ -1,0 +1,56 @@
+@import '../../styles/common';
+
+.thread {
+	display: grid;
+
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: 1fr auto;
+	grid-template-areas:
+		"user username date"
+		"comment comment submit";
+	gap: 10px;
+	padding: 15px;
+	align-items: center;
+}
+
+.user {
+	grid-area: user;
+	margin-right: 5px;
+}
+
+.username {
+	grid-area: username;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.date {
+	grid-area: date;
+}
+.comment {
+	grid-area: comment;
+	align-self: start;
+}
+.submit {
+	grid-area: submit;
+	align-self: end;
+}
+
+@media (max-width: 765px) {
+	.thread {
+		display: grid;
+
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr auto auto;
+		grid-template-areas:
+			"user username"
+			"date date"
+			"comment comment"
+			" . submit";
+		gap: 5px;
+		padding: 10px;
+		.submit {
+			justify-self: end;
+		}
+	}
+}

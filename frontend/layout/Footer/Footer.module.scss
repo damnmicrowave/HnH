@@ -1,0 +1,11 @@
+@import '../../styles/common.scss';
+
+.wrapper {
+	background-color: map-get($map: $col, $key: ulight);
+	height: 100px;
+}
+@media (max-width: 765px) {
+	.foote.wrapper {
+		height: 70px;
+	}
+}

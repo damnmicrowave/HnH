@@ -1,7 +1,22 @@
+import {
+  Button,
+  Card,
+  Input,
+  NewThread,
+  P,
+  Star,
+  Tag,
+  Textarea,
+  Thread,
+  Tick
+} from '../components'
 import type { NextPage } from 'next'
+import { withLayout } from '../layout/Layout'
+import { format } from 'date-fns'
+import { Description, MainPage, Top } from '../pages-components'
 
-const Home: NextPage = () => {
-  return <>Hi, mom!</>
+function Home({}): JSX.Element {
+  return <MainPage />
 }
 
-export default Home
+export default withLayout(Home)

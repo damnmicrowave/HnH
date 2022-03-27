@@ -6,7 +6,8 @@ module.exports = {
     fallback: [
       {
         source: '/:path*',
-        destination: 'https://hack-n-heal.herokuapp.com/:path*'
+        destination:
+          'https://hack-n-heal-git-backend-damnmicrowave.vercel.app/:path*'
       }
     ]
   }),
@@ -15,7 +16,7 @@ module.exports = {
     config.module.rules.push({
       test: /\.svg$/,
       issuer: {
-        and: [ /\.(js|ts)x?$/ ]
+        and: [/\.(js|ts)x?$/]
       },
       use: [
         {
@@ -28,5 +29,5 @@ module.exports = {
     })
     return config
   },
-  pageExtensions: [ 'page.tsx', 'endpoint.ts' ]
+  pageExtensions: ['page.tsx', 'endpoint.ts']
 }

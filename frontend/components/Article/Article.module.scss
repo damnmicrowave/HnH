@@ -1,0 +1,17 @@
+@import "../../styles/common";
+
+.title {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas: "P I";
+	gap: 10px;
+
+	.titleP {
+		grid-area: P;
+
+	}
+
+	.titleI {
+		grid-area: I;
+	}
+}

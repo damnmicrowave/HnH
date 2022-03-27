@@ -1,0 +1,24 @@
+@import "../../styles/common";
+
+.button {
+	display: inline;
+	box-sizing: border-box;
+	width: fit-content;
+	padding: 0 30px;
+	cursor: pointer;
+	transition: all 0.2s;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 800;
+	height: 45px;
+
+	color: white;
+	border: 1px solid white;
+	background-color: map-get($map: $col, $key: medium);
+
+	&:hover {
+		background-color: map-get($map: $col, $key: medark);
+	}
+}
