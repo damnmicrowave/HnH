@@ -82,8 +82,12 @@ namespace backend
                 Get(Ref(Collection("threads"), id))
                 );
             ObjectV data = (ObjectV)result.At("data");
-            RefV author = (RefV)data.At("author");
-            Thread thread = new Thread(id, (string)data.At("name"), author.Id, (long)result.At("ts"));
+            RefV authorid = (RefV)data.At("author");
+            Value author = await client.Query(
+                Get(Ref(Collection("users"), authorid.Id))
+                );
+            Console.WriteLine(author.At("data"));
+            Thread thread = new Thread(id, (string)data.At("name"), (string)((ObjectV)author.At("data")).At("username"), authorid.Id, (long)result.At("ts"));
             return thread;
         }
 

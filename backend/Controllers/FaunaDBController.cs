@@ -14,15 +14,6 @@ namespace backend.Controllers
             FaunaDB fauna = new FaunaDB();
 
             List<Topic> topics = await fauna.ReturnTopics();
-
-            /*Dictionary<string, Dictionary<string, Topic>> topicsJson = new Dictionary<string, Dictionary<string, Topic>>();
-
-            topicsJson["object"] = new Dictionary<string, Topic>();
-            for (int i = 0; i < topics.Count; i++)
-            {
-                topicsJson["object"][i.ToString()] = topics[i];
-
-            }*/
             JsonConstructor jsonData = new JsonConstructor(topics);
             return jsonData.jsonData;
         }
@@ -44,7 +35,7 @@ namespace backend.Controllers
             FaunaDB fauna = new FaunaDB();
             var thread = await fauna.ReturnSingleThread(id);
             JsonConstructor jsonData = new JsonConstructor(thread);
-            return jsonData;
+            return jsonData.jsonData;
         }
 
         [HttpGet("messages")]
