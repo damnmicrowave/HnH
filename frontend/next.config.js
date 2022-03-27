@@ -6,7 +6,7 @@ module.exports = {
     fallback: [
       {
         source: '/:path*',
-        destination: 'https://hack-n-heal-git-backend-damnmicrowave.vercel.app/:path*'
+        destination: 'https://hack-n-heal.herokuapp.com/:path*'
       }
     ]
   }),
