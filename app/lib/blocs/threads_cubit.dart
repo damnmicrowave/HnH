@@ -19,7 +19,6 @@ class ThreadsCubit extends Cubit<ThreadsModel?> {
         },
       ]
     });
-    print(threads.objects);
     emit(threads);
   }
 }

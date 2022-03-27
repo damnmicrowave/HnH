@@ -1,13 +1,13 @@
 import 'package:hack_n_heal/models/user.dart';
 
-class Articles {
-  Articles({
+class ArticlesModel {
+  ArticlesModel({
     required this.objects,
   });
 
   List<Article> objects;
 
-  factory Articles.fromJson(Map<String, dynamic> json) => Articles(
+  factory ArticlesModel.fromJson(Map<String, dynamic> json) => ArticlesModel(
     objects: List<Article>.from(json["objects"].map((x) => Article.fromJson(x))),
   );
 }

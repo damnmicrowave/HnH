@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hack_n_heal/blocs/article_cubit.dart';
 import 'package:hack_n_heal/blocs/threads_cubit.dart';
 import 'package:hack_n_heal/blocs/topics_cubit.dart';
 import 'package:hack_n_heal/pages/articles.dart';
@@ -9,6 +10,7 @@ import 'package:hack_n_heal/pages/landing.dart';
 import 'package:hack_n_heal/pages/partners.dart';
 import 'package:hack_n_heal/pages/settings.dart';
 import 'package:hack_n_heal/uikit/colors.dart';
+import 'package:hack_n_heal/widgets/article/article.dart';
 import 'package:hack_n_heal/widgets/topic/topic.dart';
 import 'blocs/observer.dart';
 
@@ -32,18 +34,17 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/topics': (context) => MultiBlocProvider(
-            providers: [
+        '/topics': (context) => MultiBlocProvider(providers: [
               BlocProvider(create: (_) => TopicsCubit()),
-            ],
-            child: const Topics()),
-        '/topic': (context) => MultiBlocProvider(
-            providers: [
+            ], child: const Topics()),
+        '/topic': (context) => MultiBlocProvider(providers: [
               BlocProvider(create: (_) => ThreadsCubit()),
-            ],
-            child: const Topic()),
+            ], child: const Topic()),
         '/settings': (context) => const Settings(),
-        '/articles': (context) => const Articles(),
+        '/articles': (context) => MultiBlocProvider(providers: [
+              BlocProvider(create: (_) => ArticlesCubit()),
+            ], child: const Articles()),
+        '/article': (context) => const Article(),
         '/partners': (context) => const Partners(),
       },
     );
