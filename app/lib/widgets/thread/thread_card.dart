@@ -27,7 +27,7 @@ class _ThreadCardState extends State<ThreadCard> {
   Widget build(BuildContext context) {
     initializeDateFormatting('en_EN');
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Card(
           elevation: 2,
           child: ListTile(
@@ -37,11 +37,11 @@ class _ThreadCardState extends State<ThreadCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                        width: 220,
+                        width: 200,
                         height: 50,
-                        padding: EdgeInsets.only(top:12),
+                        padding: const EdgeInsets.only(top:12),
                         child: const AppText().tileText(widget.name)),
-                    AppText().tileTrailingText(
+                    const AppText().tileTrailingText(
                         DateFormat('d MMMM yyyy', 'en_EN').format(
                             DateTime.fromMicrosecondsSinceEpoch(
                                 widget.datetime)))
@@ -51,14 +51,14 @@ class _ThreadCardState extends State<ThreadCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 25),
+                      margin: const EdgeInsets.symmetric(vertical: 25),
                       decoration: BoxDecoration(
                           border: Border.all(
-                            color: AppColors().primaryColor(),
+                            color: const AppColors().primaryColor(),
                           ),
                           borderRadius: BorderRadius.circular(5)),
                       child: TextButton(
-                        child: AppText().buttonText('Go to discussion'),
+                        child: const AppText().buttonText('Go to discussion'),
                         onPressed: () {},
                       ),
                     ),

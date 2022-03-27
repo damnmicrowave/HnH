@@ -76,6 +76,8 @@ class Api {
   }
 
   Future<ThreadsModel?> loadThreads(String topicId) async {
+    print(topicId);
+    print('keks !');
     final uri = Uri.parse(baseUrl + 'community/threads?topicId=$topicId');
     var response = await client.get(uri);
     final success = response.statusCode == 200;
