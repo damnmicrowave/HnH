@@ -7,7 +7,7 @@ class AppButton extends StatelessWidget {
 
   Widget middleButton(text) => Container(
         height: 50,
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         width: double.infinity,
         child: ElevatedButton(
             style: ButtonStyle(
@@ -20,8 +20,8 @@ class AppButton extends StatelessWidget {
       );
 
   Widget bigButton(text) => Container(
-        height: 120,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
+        height: 100,
+        margin: const EdgeInsets.symmetric(horizontal: 25),
         width: double.infinity,
         child: ElevatedButton(
             onPressed: () {},

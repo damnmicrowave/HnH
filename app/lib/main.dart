@@ -5,6 +5,7 @@ import 'package:hack_n_heal/blocs/article_cubit.dart';
 import 'package:hack_n_heal/blocs/threads_cubit.dart';
 import 'package:hack_n_heal/blocs/topics_cubit.dart';
 import 'package:hack_n_heal/pages/articles.dart';
+import 'package:hack_n_heal/pages/form.dart';
 import 'package:hack_n_heal/pages/topics.dart';
 import 'package:hack_n_heal/pages/landing.dart';
 import 'package:hack_n_heal/pages/partners.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => FormPage(),
         '/topics': (context) => MultiBlocProvider(providers: [
               BlocProvider(create: (_) => TopicsCubit()),
             ], child: const Topics()),

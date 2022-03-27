@@ -40,6 +40,7 @@ class AppText extends StatelessWidget {
           fontWeight: FontWeight.w600,
           letterSpacing: 1.3));
 
+
   @override
   Widget build(BuildContext context) {
     return Container();

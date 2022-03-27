@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_n_heal/models/article.dart';
+import 'package:hack_n_heal/models/articles.dart';
 
 class ArticlesCubit extends Cubit<ArticlesModel?> {
   ArticlesCubit() : super(null);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hack_n_heal/uikit/colors.dart';
 import 'package:hack_n_heal/uikit/text.dart';
+import 'package:hack_n_heal/uikit/user_bookmark.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
@@ -61,13 +62,7 @@ class _ThreadCardState extends State<ThreadCard> {
                         onPressed: () {},
                       ),
                     ),
-                    Container(
-                      child: const AppText().tileSubtitleText("@" + widget.username),
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: AppColors().cardLabelColor(),
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
+                    UserBookmark(username: widget.username)
                   ],
                 )
               ],

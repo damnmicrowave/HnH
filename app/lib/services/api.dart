@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:hack_n_heal/models/article.dart';
+import 'package:hack_n_heal/models/articles.dart';
 import 'package:hack_n_heal/models/threads.dart';
 import 'package:hack_n_heal/models/topics.dart';
 import 'package:hack_n_heal/models/user.dart';
