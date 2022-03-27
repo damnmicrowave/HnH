@@ -39,14 +39,14 @@ namespace backend
                     foreach (Value value in values)
                     {
                         RefV valueRef = (RefV)value.At("ref");
-                        Console.WriteLine(valueRef.Id);
+                        
                         topics.Add(value.At("data").To<Topic>().Value);
                         topics[^1].Id = valueRef.Id;
                     }
                 },
                 Failure: reason => Console.WriteLine($"Something went wrong: {reason}")
             );
-            Console.WriteLine(topics);
+
             return topics;
         }
 
@@ -86,7 +86,6 @@ namespace backend
             Value author = await client.Query(
                 Get(Ref(Collection("users"), authorid.Id))
                 );
-            Console.WriteLine(author.At("data"));
             Thread thread = new Thread(id, (string)data.At("name"), (string)((ObjectV)author.At("data")).At("username"), authorid.Id, (long)result.At("ts"));
             return thread;
         }
@@ -104,7 +103,6 @@ namespace backend
                 {
                     foreach (Value value in values)
                     {
-                        Console.WriteLine(value);
                         ObjectV author = (ObjectV)value.At("author");
                         Message msg = new Message((string)value.At("id"), (string)value.At("text"), (string)author.At("username"), (string)author.At("id"), (long)value.At("datetime"));
                         messages.Add(msg);
@@ -125,7 +123,7 @@ namespace backend
                         Obj(
                             "data", Obj(
                                 "thread", Ref(Collection("threads"), threadId),
-                                "user", Ref(Collection("users"), Var("userId")),
+                                "author", Ref(Collection("users"), Var("userId")),
                                 "text", text
                             )
                         )
@@ -136,7 +134,7 @@ namespace backend
                     "object", Obj(
                         "id", Var("id"),
                         "datetime", Var("datetime"),
-                        "user", Obj(
+                        "author", Obj(
                             "id", Var("userId"),
                             "username", Select(
                             Arr("data", "username"),

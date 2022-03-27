@@ -19,7 +19,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("threads")]
-        public async Task<object> GetThreads([FromQuery(Name = "tpoicId")] string id)
+        public async Task<object> GetThreads([FromQuery(Name = "topicId")] string id)
         {
             FaunaDB fauna = new FaunaDB();
             var data = await fauna.ReturnThreads(id);
