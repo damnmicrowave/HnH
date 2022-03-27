@@ -70,7 +70,7 @@ namespace backend
         }
         public User(string userid)
         {
-            this.userid = userid;
+            this.id = userid;
         }
     }
 }
