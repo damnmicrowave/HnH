@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(20.0),
             child: Text.rich(
               TextSpan(
-                  text: 'Hello in ',
+                  text: 'Welcome to ',
                   style: TextStyle(
                       fontSize: 24,
                       color: const AppColors().heading1Color(),

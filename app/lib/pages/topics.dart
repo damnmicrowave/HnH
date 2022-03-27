@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_n_heal/blocs/topics_cubit.dart';
 import 'package:hack_n_heal/models/topics.dart';
 import 'package:hack_n_heal/uikit/annotation.dart';
+import 'package:hack_n_heal/uikit/loading.dart';
 
 import 'package:hack_n_heal/uikit/title.dart';
 import 'package:hack_n_heal/widgets/topic/topic_card.dart';
@@ -30,7 +31,7 @@ class _TopicsState extends State<Topics> {
     return BlocBuilder<TopicsCubit, TopicsModel?>(
       builder: (context, state) {
         if (state?.objects == null) {
-          return const Text('Loading...');
+          return const AppLoading();
         }
 
         return Scaffold(
