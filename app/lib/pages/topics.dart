@@ -38,7 +38,7 @@ class _TopicsState extends State<Topics> {
           appBar: AppBar(title: const AppTitle().iconTitle('Topics', context)),
           body: ListView(
             children: [
-              Annotation().grey('Annotation'),
+              Annotation().grey('Key areas of discussion'),
               ...state!.objects.map((topic) => TopicCard(
                     title: topic.name,
                     id: topic.id,

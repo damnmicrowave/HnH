@@ -40,7 +40,7 @@ class _UserState extends State<User> {
               colors: [const AppColors().primaryColor(), Colors.indigo[400]!]),
         ),
         accountName: Text(preferences?.getString("username") ?? ''),
-        accountEmail: const Text("shiza@hacknheal.aaaa"),
+        accountEmail: const Text(""),
       ),
       padding: EdgeInsets.zero,
     );

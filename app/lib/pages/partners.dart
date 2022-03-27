@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hack_n_heal/uikit/annotation.dart';
 import 'package:hack_n_heal/uikit/title.dart';
 
 class Partners extends StatefulWidget {
@@ -15,7 +16,12 @@ class _PartnersState extends State<Partners> {
         appBar: AppBar(
           title: const AppTitle().iconTitle('Partners', context),
         ),
-        body: Container()
+        body: ListView(
+          children: [
+            Annotation().grey(
+                'People who have contributed to helping people with ACE'),
+          ],
+        )
     );
   }
 }
