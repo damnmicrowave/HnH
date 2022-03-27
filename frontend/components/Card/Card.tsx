@@ -6,6 +6,7 @@ import { Star } from '../Star/Star'
 import ArrowIcon from './Arrow.svg'
 import Link from 'next/link'
 import { PropsWithChildren } from 'react'
+import { Thread } from '../../pages/app/types'
 
 export const Card = ({
   object,
@@ -18,10 +19,10 @@ export const Card = ({
         {object.name}
       </P>
       <Star className={styles.star} />
-      {variant !== 'topic' && <Tag className={styles.tag}>theme</Tag>}
-      <P className={styles.info}>{children}</P>
+      {/* {typeof object===Thread && <Tag className={styles.tag}>{object.topic}</Tag>} */}
 
-      <Link href={`/${variant}/${object.id}`}>
+      <P className={styles.info}>{children}</P>
+      <Link href={`/${variant}/${object.id}`} passHref>
         <ArrowIcon className={styles.arrow} />
       </Link>
     </div>

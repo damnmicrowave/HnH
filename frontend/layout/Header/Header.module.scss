@@ -23,11 +23,16 @@
 		justify-self: end;
 		
 		a {
+			color: white;
+			text-decoration: none;
 			display: inline-block;
 			margin-left: 10px;
-			&hover {
-				color: map-get($col, medium);
-			}
+		}
+		a:hover {
+			color: map-get($col, medium);
+		}
+		a:active {
+			color: map-get($col, dark);
 		}
 	}
 }

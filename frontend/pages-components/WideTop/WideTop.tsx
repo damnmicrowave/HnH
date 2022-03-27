@@ -1,63 +1,16 @@
 import styles from './WideTop.module.scss'
 import { Card, P, Button } from 'components'
-import { CardProps } from '../../components/Card/Card.props'
+import WideTopProps from './WideTop.props'
 
-export const WideTop = ({ variant }:CardProps): JSX.Element => {
-
-  return (
-    	<div className={styles.cards}>
-			{variant == 'topic' && <>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			<Card variant='topic' title={'title'}>description</Card>
-			
-			</>}
-			{variant == 'article' && <>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			<Card variant='article' title={'title'}>description</Card>
-			</>}
-			{variant == 'discussion' && <>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			<Card variant='discussion' title={'title'}>description</Card>
-			</>}
-		</div>
-  )
+export const WideTop = ({ variant, objects }: WideTopProps): JSX.Element => {
+	if (objects === undefined) {
+         return <></>;
+    }
+	else {
+		return (
+			<div className={styles.cards}>
+				{objects.map(o => <Card key={o.id} variant={variant} object={o}>description</Card>)}
+			</div>
+		)
+	}
 }

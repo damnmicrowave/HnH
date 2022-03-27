@@ -2,16 +2,14 @@ import { DiscussionsPageProps } from './DiscussionsPage.props';
 import styles from './DiscussionsPage.module.scss';
 import cn from 'classnames';
 import { Button, NewThread, P, Star, Thread } from '../../components';
-import { Description } from '../Description/Description';
-import { Top } from '../Top/Top';
-import { Partners } from '../Partners/Partners';
+import { Thread as Th } from '../../pages/app/types';
 import { WideTop } from '../WideTop/WideTop';
 
-export const DiscussionsPage = ({ ...props }: DiscussionsPageProps): JSX.Element => {
+export const DiscussionsPage = ({ objects }: DiscussionsPageProps): JSX.Element => {
     return (
 		<div className={styles.wrapper}>
-			<P tag='h1' className={styles.title}>Our discussions</P>
-			<WideTop className={styles.widetop} variant={'discussion'} />
+			<P tag='h1' className={styles.title}>Our threads</P>
+			<div className={styles.widetop}><WideTop objects={objects} variant='thread' /></div>
 			<div className={styles.button}>
 				<Button>VIEW MORE</Button>
 			</div>

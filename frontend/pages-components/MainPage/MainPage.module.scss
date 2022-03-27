@@ -3,12 +3,27 @@
 .wrapper {
 	display: grid;
 	gap: 20px;
-
 }
 
 .tops {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 10px;
 	justify-items: center;
+}
+
+@media (max-width: 765px) {
+	.tops {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr;
+		grid-template-areas: "top1" "top2";
+		gap: 10px;
+	}
+	.top1 {
+		grid-area: top1;
+	}
+	.top2{
+		grid-area: top2;
+	}
 }

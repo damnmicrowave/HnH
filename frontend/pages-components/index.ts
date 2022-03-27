@@ -7,5 +7,3 @@ export {DiscussionsPage} from './DiscussionsPage/DiscussionsPage'
 export {TopicsPage} from './TopicsPage/TopicsPage'
 export {TopicPage} from './TopicPage/TopicPage'
 export {ArticlesPage} from './ArticlesPage/ArticlesPage'
-
-export {TestPage} from './TestPage/TestPage'

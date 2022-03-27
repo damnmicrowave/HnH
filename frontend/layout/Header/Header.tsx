@@ -13,9 +13,10 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			<Link href='/' passHref><LogoIcon /></Link>
 			
 			<div className={styles.menu}>
-				<a>About us</a>
-				<a>Tops</a>
-				<a>Our partners</a>
+				<Link href={`\\topics`}><a>Topics</a></Link>
+				<Link href={`\\articles`}><a>Articles</a></Link>
+				<Link href={`\\threads`}><a>Threads</a></Link>
+				<Link href={`\\`}><a>Main</a></Link>
 			</div>
 			<PersonIcon className={styles.person}/>
 			<BurgerIcon className={styles.burger}/>

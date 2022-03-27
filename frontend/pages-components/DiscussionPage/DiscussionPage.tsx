@@ -13,7 +13,7 @@ export const DiscussionPage = ({ ...props }: DiscussionPageProps): JSX.Element =
 				<P className={styles.titleP} tag='h1'>Username: TITLE</P>
 				<Star className={styles.titleI} />
 			</div>
-			<div className={styles.top}><Top variant='discussion'/></div>
+			<div className={styles.top}><Top variant='thread'/></div>
 			<div className={styles.comments}>
 				<Thread className={styles.top} username='user111' date={new Date()} comment='Sample thread' />
 				<NewThread username='user123'></NewThread>

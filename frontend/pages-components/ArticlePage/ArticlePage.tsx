@@ -18,13 +18,16 @@ export const ArticlePage = ({ articleId }: ArticlePageProps): JSX.Element => {
         query: `articleId=${articleId}`
       })
       setArticle(response.data.object)
-    })()
+    })();
+  })
+
+  useEffect (() => {
     ;(async () => {
       const response = await api.knowledge.comments({
-        query: `articleId=${articleId}`
-      })
-      setComments(response.data.object)
-    })()
+      query: `articleId=${articleId}`
+    })
+    setComments(response.data.object)
+  })();
   })
 
   if (!article) return <Loading />
