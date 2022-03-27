@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_n_heal/blocs/threads_cubit.dart';
 import 'package:hack_n_heal/models/threads.dart';
 import 'package:hack_n_heal/uikit/annotation.dart';
+import 'package:hack_n_heal/uikit/loading.dart';
 import 'package:hack_n_heal/uikit/title.dart';
 import 'package:hack_n_heal/widgets/thread/thread_card.dart';
 
@@ -32,7 +33,7 @@ class _TopicState extends State<Topic> {
 
     return BlocBuilder<ThreadsCubit, ThreadsModel?>(builder: (context, state) {
       if (state?.objects == null) {
-        return const Text('Loading...');
+        return const AppLoading();
       }
 
       return Scaffold(

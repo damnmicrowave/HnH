@@ -4,6 +4,7 @@ import 'package:hack_n_heal/blocs/articles_cubit.dart';
 import 'package:hack_n_heal/models/articles.dart';
 
 import 'package:hack_n_heal/uikit/annotation.dart';
+import 'package:hack_n_heal/uikit/loading.dart';
 
 import 'package:hack_n_heal/uikit/title.dart';
 import 'package:hack_n_heal/widgets/article/article_card.dart';
@@ -31,14 +32,14 @@ class _ArticlesState extends State<Articles> {
     return BlocBuilder<ArticlesCubit, ArticlesModel?>(
         builder: (context, state) {
       if (state?.objects == null) {
-        return const Text('Loading...');
+        return const AppLoading();
       }
 
       return Scaffold(
         appBar: AppBar(title: const AppTitle().iconTitle('Articles', context)),
         body: ListView(
           children: [
-            Annotation().grey('Annotation'),
+            Annotation().grey('Scientific articles on important topics'),
             ...state!.objects.map((article) => ArticleCard(
                   name: article.name,
                   id: article.id,

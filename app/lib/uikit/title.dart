@@ -15,7 +15,7 @@ class AppTitle extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(elevation: 0),
           onPressed: () {
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamed(context, '/landing');
           },
           child: SvgPicture.asset(
             './assets/files/logo.svg',

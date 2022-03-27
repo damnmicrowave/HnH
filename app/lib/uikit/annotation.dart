@@ -10,6 +10,7 @@ class Annotation extends StatelessWidget {
   }
 
   Widget grey(text) => Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
       height: 100,
       alignment: Alignment.center,
       child: AppText().annotationText(text));
