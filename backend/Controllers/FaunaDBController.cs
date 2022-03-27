@@ -27,8 +27,8 @@ namespace backend.Controllers
             return jsonData.jsonData;
         }
 
-        [HttpGet("thread")]
-        public async Task<object> GetThreads([FromQuery(Name = "id")] string id)
+        [HttpGet("threads")]
+        public async Task<object> GetThreads([FromQuery(Name = "tpoicId")] string id)
         {
             FaunaDB fauna = new FaunaDB();
             var data = await fauna.ReturnThreads(id);
@@ -38,7 +38,16 @@ namespace backend.Controllers
             return jsonData.jsonData;
         }
 
-        [HttpGet("message")]
+        [HttpGet("thread")]
+        public async Task<object> GetThread([FromQuery(Name = "id")] string id)
+        {
+            FaunaDB fauna = new FaunaDB();
+            var thread = await fauna.ReturnSingleThread(id);
+            JsonConstructor jsonData = new JsonConstructor(thread);
+            return jsonData;
+        }
+
+        [HttpGet("messages")]
         public async Task<object> GetMessages([FromQuery(Name = "threadId")] string id)
         {
             FaunaDB fauna = new FaunaDB();
@@ -47,15 +56,12 @@ namespace backend.Controllers
             return jsonData.jsonData;
         }
 
-        [HttpPost("message")]
+        [HttpPost("messages")]
         public async Task WriteMessage([FromBody] JsonElement jsondata)
         {
             MessageJsonDecoder data = JsonSerializer.Deserialize<MessageJsonDecoder>(jsondata);
-            FaunaDB fauna = new FaunaDB(data.SECRET);
+            FaunaDB fauna = new FaunaDB(data.secret);
             var result = await fauna.WriteMessage(data.data["threadId"], data.data["text"]);
-            Console.WriteLine(data.data["threadId"]);
-            Console.WriteLine(data.data["text"]);
-            Console.WriteLine(result);
 
         }
     }

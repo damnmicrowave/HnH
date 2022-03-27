@@ -76,6 +76,17 @@ namespace backend
             return threads;
         }
 
+        public async Task<Thread> ReturnSingleThread(string id)
+        {
+            Value result = await client.Query(
+                Get(Ref(Collection("threads"), id))
+                );
+            ObjectV data = (ObjectV)result.At("data");
+            RefV author = (RefV)data.At("author");
+            Thread thread = new Thread(id, (string)data.At("name"), author.Id, (long)result.At("ts"));
+            return thread;
+        }
+
         public async Task<object> ReturnMessages(string threadid)
         {
             Value result = await client.Query(

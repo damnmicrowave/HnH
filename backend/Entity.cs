@@ -32,6 +32,14 @@ namespace backend
             this.datetime = datetime;
         }
 
+        public Thread(string id, string name, string authorid, long datetime)
+        {
+            this.Id = id;
+            this.Name = name;
+
+            this.user = new User(authorid);
+            this.datetime = datetime;
+        }
     }
 
     public class Message
@@ -60,6 +68,10 @@ namespace backend
             this.userid = userid;
             this.username = username;
         }
+        public User(string userid)
+        {
+            this.userid = userid;
+        }
     }
 }
 
@@ -79,7 +91,7 @@ public class JsonConstructor
 
 public class MessageJsonDecoder
 {
-    public string SECRET { get; set; }
+    public string secret { get; set; }
     public Dictionary<string, string> data { get; set; }
 }
 
